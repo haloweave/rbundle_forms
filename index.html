@@ -42,14 +42,20 @@
     <br /><br />
     <h3 class="sub-heading">IRS AUDIT MONITORING</h3>
 
-    <h3>SERVICE ELIGIBILITY QUESTIONS</h3>
+    <h3>SERVICE ELIGIBILITY QUESTIONS</h3><br><br>
 
     <form>
+      <label for="itf">What Federal Income Tax Form does the business file? </label>
+      <input type="text" id="itf" required/>
+      <br><br>
+      <label for="bussinessYearEnd">What is the business' year end? </label>
+      <input type="text" id="businessYearEnd" placeholder="MM/YY" required/>
+      <br><br>
       <label for="businessYear">What year was the business formed?</label>
-      <input type="text" id="businessYear" />
-      
-      <label for="businessYear">What year was the business formed?</label>
-      <input type="text" id="businessYear" />
+      <input type="text" id="businessYear" required/>
+      <br><br>
+      <label for="businessYear">What kind of legal entity is the business? </label>
+      <input type="text" id="legalEntity" required/>
     </form>
   </body>
 </html>
