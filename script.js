@@ -14,5 +14,5 @@ $("#businessYear").datepicker({
     });
 
 $(document).ready(function () {
-    $('#form-table').DataTable();
+    $('#form-table').DataTable({searching: false, paging: false, info: false});
 });
