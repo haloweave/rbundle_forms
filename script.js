@@ -1,7 +1,8 @@
 $("#businessYear").datepicker({
     format: "yyyy",
     viewMode: "years", 
-    minViewMode: "years"
+    minViewMode: "years",
+    endDate: new Date(),
 });
 
  $("#businessYear").change(function() {  
