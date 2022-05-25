@@ -28,6 +28,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css"
       rel="stylesheet"
     />
+    <link
+      href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css"
+      rel="stylesheet"
+    />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -42,40 +46,48 @@
     <br /><br />
     <h3 class="sub-heading">IRS AUDIT MONITORING</h3>
 
-    <h3>SERVICE ELIGIBILITY QUESTIONS</h3><br><br>
+    <h3>SERVICE ELIGIBILITY QUESTIONS</h3>
+    <br /><br />
 
     <form>
-      <label for="itf">What Federal Income Tax Form does the business file? </label>
-      <input type="text" id="itf" required/>
-      <br><br>
+      <label for="itf"
+        >What Federal Income Tax Form does the business file?
+      </label>
+      <input type="text" id="itf" required />
+      <br /><br />
       <label for="bussinessYearEnd">What is the business' year end? </label>
-      <input type="text" id="businessYearEnd" placeholder="MM/YY" required/>
-      <br><br>
+      <input type="text" id="businessYearEnd" placeholder="MM/YY" required />
+      <br /><br />
       <label for="businessYear">What year was the business formed?</label>
-      <input type="text" id="businessYear" required/>
-      <br><br>
-      <label for="businessYear">What kind of legal entity is the business? </label>
-      <input type="text" id="legalEntity" required/>
+      <input type="text" id="businessYear" required />
+      <br /><br />
+      <label for="businessYear"
+        >What kind of legal entity is the business?
+      </label>
+      <input type="text" id="legalEntity" required />
     </form>
-    
-    <table id="form-table" class="display" style="width:100%">
-        <thead>
-            <tr>
-                <th>&nbsp;</th>
-                <th>Tax Years</th>
-                <th>Fedral Income Tax Form</th>
-                <th>Legal Entity</th>
-                <th>Subject to BBA</th>
-                <th>&nbsp;</th>
-            </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>+</td>
-            <td>03/31/2022</td>
-            <td></td>
-          </tr>
-        </tbody>
+
+    <table id="form-table" class="display" style="width: 60%">
+      <thead>
+        <tr>
+          <th>&nbsp;</th>
+          <th>Tax Years</th>
+          <th>Fedral Income Tax Form</th>
+          <th>Legal Entity</th>
+          <th>Subject to BBA</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>+</td>
+          <td>03/31/2022</td>
+          <td>1065</td>
+          <td>S Corp.</td>
+          <td>Yes</td>
+          <td>-</td>
+        </tr>
+      </tbody>
     </table>
   </body>
 </html>
