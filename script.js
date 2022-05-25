@@ -5,8 +5,10 @@ $("#businessYear").datepicker({
     endDate: new Date(),
 });
 
- $("#businessYear, #itf", #businessYearEnd, #legalEn).change(function() {  
+ $("#businessYear, #itf, #businessYearEnd, #legalEntity").change(function() {  
         var businessYear = $( "#businessYear" ).val();
         var itf = $("#itf").val()
-        console.log(businessYear +" "+itf)
+        var businessYearEnd = $("#businessYearEnd").val()
+        var legalEntity = $("#legalEntity").val()
+        console.log(businessYear +" "+ itf +" "+ businessYearEnd +" "+ legalEntity)
     }); 
