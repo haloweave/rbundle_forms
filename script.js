@@ -6,4 +6,5 @@ $("#businessYear").datepicker({
 
  $("#businessYear").change(function() {  
         var businessYear = $( "#businessYear" ).val();
+        console.log(businessYear)
     }); 
