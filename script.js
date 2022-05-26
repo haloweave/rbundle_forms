@@ -12,7 +12,3 @@ $("#businessYear").datepicker({
         var legalEntity = $("#legalEntity").val()
         console.log(businessYear +" "+ itf +" "+ businessYearEnd +" "+ legalEntity)
     });
-
-$(document).ready(function () {
-    $('#form-table').DataTable({searching: false, paging: false, info: false});
-});
