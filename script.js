@@ -23,12 +23,22 @@ $(document).ready(function () {
       for (var i = 1; i <= rowFinalNum + 1; i++) {
         var loopYear = year;
         resultHtml +=
+          "<thead>
+            <tr>
+              <th>&nbsp;</th>
+              <th>Tax Years</th>
+              <th>Fedral Income Tax Form</th>
+              <th>Legal Entity</th>
+              <th>Subject to BBA</th>
+              <th>&nbsp;</th>
+            </tr>
+          </thead>"
           "<tr>"
           "<td><input type='button' class='add' value='Addrow'></td>"
-          "<td><input type='name' placeholder='"+businessYearEnd+"/"+businessYear+"' value=''>"
-          "<td><input type='name' placeholder='"+itf+"' value=''>"
-          "<td><input type='name' placeholder='"+legalEntity+"' value=''>"
-          "<td><input type='name' placeholder='N/A' value=''>"
+          "<td><input type='name' placeholder='"+businessYearEnd+"/"+businessYear+"' value='1'>"
+          "<td><input type='name' placeholder='"+itf+"' value='2'>"
+          "<td><input type='name' placeholder='"+legalEntity+"' value='3'>"
+          "<td><input type='name' placeholder='N/A' value='4'>"
           "<td><input type='button' class='' value='Deleterow'></td>"
           "</tr>";
         year--;
@@ -36,7 +46,7 @@ $(document).ready(function () {
     } else {
       console.log("row num is empty");
     }
-    console.log()
+    console.log(businessYearEnd +"/"+businessYear +" "+ itf +" "+  legalEntity);
     console.log("value of rowFinalNum: " + rowFinalNum);
     console.log("value of rowNum: " + rowNum);
     console.log("value of i: " + i);
