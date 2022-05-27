@@ -5,6 +5,8 @@ $("#businessYear").datepicker({
   endDate: new Date(),
 });
 
+
+
 $(document).ready(function () {
   $("#businessYear, #legalEntity, #itf, #businessYearEnd").on(
     "change",
@@ -37,8 +39,7 @@ $(document).ready(function () {
             businessYearEnd +
             "/" +
             businessYearLoop +
-            "</td><td>" +
-            itf +
+            "</td><input type='text' placeholder='"+itf+"'/><td>"
             "</td><td>" +
             legalEntity +
             "</td><td>N/A</td><td><input type=button id='deleteRow' value='Delete Row'/></td></tr>";
@@ -54,10 +55,8 @@ $(document).ready(function () {
       return false;
     }
   );
-});
-
-$(document).ready(function () {
-  $("#addRow").click(function () {
+  
+    $("#addRow").click(function () {
     var legalEntity = $("#legalEntity").val();
     var itf = $("#itf").val();
     var businessYearEnd = $("#businessYearEnd").val();
@@ -72,8 +71,7 @@ $(document).ready(function () {
       businessYearEnd +
       "/" +
       businessYearLoop +
-      "</td><td>" +
-      itf +
+      "</td><input type='text' placeholder='"+itf+"'/><td>"
       "</td><td>" +
       legalEntity +
       "</td><td>N/A</td><td><input type=button id='deleteRow' value='Delete Row'/></td></tr>";
@@ -81,4 +79,7 @@ $(document).ready(function () {
     console.log("value of input year on addRow: " + addRowInputYear);
     console.log("value of addRowIndex: " + addRowIndex);
   });
+  
 });
+
+
