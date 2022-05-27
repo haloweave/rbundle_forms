@@ -13,7 +13,7 @@ to this section's matching END comment to see page-specific styles.
   Each section indicates an element or elements, then lists the style properties to apply
   See if you can cross-reference the rules in this file with the elements in index.html
 */
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
 /* Our default values set as CSS variables */
 :root {
   --color-bg: #69F7BE;
@@ -35,16 +35,7 @@ to this section's matching END comment to see page-specific styles.
 }
 
 /* Import fonts */
-@font-face {
-  font-family: HK Grotesk;
-  src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Regular.otf?v=1603136326027")
-    format("opentype");
-}
-@font-face {
-  font-family: HK Grotesk;
-  font-weight: bold;
-  src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Bold.otf?v=1603136323437")
-    format("opentype");
+font-family: 'Open Sans', sans-serif;
 }
 
 table, th, td {

@@ -13,21 +13,35 @@ $(document).ready(function () {
       var itf = $("#itf").val();
       var businessYearEnd = $("#businessYearEnd").val();
       var businessYear = $("#businessYear").val();
-      var table = $("#form-table");
+      var table = $("#form-table tbody");
       var rowNum = $("#businessYear").val();
       const d = new Date();
       let year = d.getFullYear();
       var rowFinalNum = year - rowNum;
       var resultHtml = "";
 
-      if (!!businessYear && !!businessYearEnd && !!legalEntity && !!itf && !!rowNum) {
+      if (
+        !!businessYear &&
+        !!businessYearEnd &&
+        !!legalEntity &&
+        !!itf &&
+        !!rowNum
+      ) {
         for (var i = 1; i <= rowFinalNum + 1; i++) {
           var businessYearLoop = year;
           console.log(
             businessYearEnd + "/" + businessYear + " " + itf + " " + legalEntity
           );
-          resultHtml += 
-            "<thead><tr><th>&nbsp;</th><th>Tax Years</th><th>Federal Income Tax Form</th><th>Legal Entity</th><th>Subject to bba</th><th>&nbsp;</th></tr></thead><tr><td><input type=button value='Add row'/></td><td>"+businessYearEnd+"/"+ businessYearLoop+ " " + legalEntity + " " + itf +"</td></tr>"
+          resultHtml +=
+            "<tr><td><input type=button id='addRow' value='Add row'/></td><td>" +
+            businessYearEnd +
+            "/" +
+            businessYearLoop +
+            "</td><td>" +
+            itf +
+            "</td><td>" +
+            legalEntity +
+            "</td><td>N/A</td><td><input type=button id='deleteRow' value='Delete Row'/></td></tr>";
           year--;
         }
       } else {
@@ -40,4 +54,31 @@ $(document).ready(function () {
       return false;
     }
   );
+});
+
+$(document).ready(function () {
+  $("#addRow").click(function () {
+    var legalEntity = $("#legalEntity").val();
+    var itf = $("#itf").val();
+    var businessYearEnd = $("#businessYearEnd").val();
+    var businessYear = $("#businessYear").val();
+    var addRowInputYear = $("#businessYear").val();
+    const d = new Date();
+    let year = d.getFullYear();
+    var addRowIndex = year - addRowInputYear + 1;
+    var businessYearLoop = year;
+    var addRowAppend =
+      "<tr><td><input type=button id='addRow' value='Add row'/></td><td>" +
+      businessYearEnd +
+      "/" +
+      businessYearLoop +
+      "</td><td>" +
+      itf +
+      "</td><td>" +
+      legalEntity +
+      "</td><td>N/A</td><td><input type=button id='deleteRow' value='Delete Row'/></td></tr>";
+    $("#form-table").append(addRowAppend);
+    console.log("value of input year on addRow: " + addRowInputYear);
+    console.log("value of addRowIndex: " + addRowIndex);
+  });
 });
