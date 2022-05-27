@@ -49,7 +49,8 @@ $(document).ready(function () {
     }
   );
   
-    $("#addRow").click(function () {
+    $("#addRow").on('click', function () {
+    console.log("this add row was clicked");
     var addRowAppend =
       "<tr><td><input type='button' id='addRow' value='Add row'/></td><td><input type='text' value='' required/></td><td><input type='text' value='' required/></td><td><input type='text' value='' required/></td><td><input type='text' value='N/A' required/></td><td><input type='button' id='deleteRow' value='Delete Row'/></td></tr>";
     $("#form-table").append(addRowAppend);
