@@ -9,18 +9,23 @@ $("#businessYear").datepicker({
 function RemoveMe(object) {
   $(object).parents('tr').remove();
   renumberRows();
+    tableRowSize--;
+    console.log("tableRowSize on delete: "+tableRowSize);
 }
 
 function addTableRow(object){
   var addRowAppend =
-      "<tr><td><input type='button' id='addRow' value='+' onChange='addTableRow(this)'/></td><td></td><td><input type='text' value='' required/></td><td><input type='text' value='' required/></td><td><input type='text' value='' required/></td><td><input type='text' value='N/A' required/></td><td><input type='button' id='deleteRow' value='🗑️' onclick='RemoveMe(this)'/></td></tr>";
+      "<tr><td><input type='button' id='addRow' value='+' onChange='addTableRow(this)'/></td><td id='currentYear'></td>' '<td><input type='text' value='' required/></td><td><input type='text' value='' required/></td><td><input type='text' value='' required/></td><td><input type='text' value='N/A' required/></td><td><input type='button' id='deleteRow' value='🗑️' onclick='RemoveMe(this)'/></td></tr>";
     $(object).parents('tr').after(addRowAppend);
+  tableRowSize++;
+  console.log("tableRowSize on add: "+tableRowSize);
   renumberRows();
 }
 
 function renumberRows() {
     $('table#form-table tbody tr').each(function(index) {
-        $(this).children('td:second').text("Current Year: "+index+1);
+        $(this).children('#currentYear').text("Current Year: "+ (index+1) );
+        console.log("renumber is running!");
     });
 }
 
@@ -54,7 +59,7 @@ $(document).ready(function () {
             businessYearEnd + "/" + businessYear + " " + itf + " " + legalEntity
           );
           resultHtml +=
-            "<tr id='table' ><td><input type='button' id='addRow' value='+' onClick='addTableRow(this)'/></td><td></td><td><input type='text' value='"+businessYearEnd+"/"+businessYear+"' required/></td><td><input type='text' value='"+itf+"' required/></td><td><input type='text' value='"+legalEntity+"' required/></td><td><input type='text' value='N/A' required/></td><td><input type='button' id='deleteRow' value='🗑️'onclick='RemoveMe(this)'/></td></tr>"
+            "<tr id='table' ><td><input type='button' id='addRow' value='+' onClick='addTableRow(this)'/></td><td id='currentYear'>0</td><td><input type='text' value='"+businessYearEnd+"/"+businessYear+"' required/></td><td><input type='text' value='"+itf+"' required/></td><td><input type='text' value='"+legalEntity+"' required/></td><td><input type='text' value='N/A' required/></td><td><input type='button' id='deleteRow' value='🗑️'onclick='RemoveMe(this)'/></td></tr>"
           year--;
         }
       } else {
