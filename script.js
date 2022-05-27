@@ -5,18 +5,9 @@ $("#businessYear").datepicker({
   endDate: new Date(),
 });
 
-$("#businessYear, #itf, #businessYearEnd, #legalEntity").change(function () {
-  var businessYear = $("#businessYear").val();
-  var itf = $("#itf").val();
-  var businessYearEnd = $("#businessYearEnd").val();
-  var legalEntity = $("#legalEntity").val();
-  console.log(
-    businessYear + " " + itf + " " + businessYearEnd + " " + legalEntity
-  );
-});
 
 $(document).ready(function () {
-  $("#businessYear, #itf, #businessYearEnd, #legalEntity").change(function () {
+  $("#businessYear, #legalEntity, #itf, #businessYearEnd").on('change', function () {
     var legalEntity = $("#legalEntity").val();
     var itf = $("#itf").val();
     var businessYearEnd = $("#businessYearEnd").val();
@@ -45,6 +36,7 @@ $(document).ready(function () {
     } else {
       console.log("row num is empty");
     }
+    console.log()
     console.log("value of rowFinalNum: " + rowFinalNum);
     console.log("value of rowNum: " + rowNum);
     console.log("value of i: " + i);
