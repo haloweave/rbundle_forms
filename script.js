@@ -27,23 +27,7 @@ $(document).ready(function () {
             businessYearEnd + "/" + businessYear + " " + itf + " " + legalEntity
           );
           resultHtml += 
-            "<thead>"
-              "<tr>"
-                "<th>&nbsp;</th>"
-                "<th>Tax Years</th>"
-                "<th>Fedral Income Tax Form</th>"
-                "<th>Legal Entity</th>"
-                "<th>Subject to BBA</th>"
-                "<th>&nbsp;</th>"
-              "</tr>"
-            "</thead>"
-              "<td></td>"
-              "<td>"+businessYearLoop+"</td>"
-              "<td></td>"
-              "<td></td>"
-              "<td></td>"
-              "<td></td>"
-              "<td></td>"
+            "<thead><tr><th>&nbsp;</th><th>Tax Years</th><th>Federal Income Tax Form</th><th>Legal Entity</th><th>Subject to bba</th><th>&nbsp;</th></tr></thead><tr><td><input type=button value='Add row'/></td><td>"+businessYearEnd+"/"+ businessYearLoop+ " " + legalEntity + " " + itf +"</td></tr>"
           year--;
         }
       } else {
