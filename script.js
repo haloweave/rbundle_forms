@@ -5,6 +5,8 @@ $("#businessYear").datepicker({
   endDate: new Date(),
 });
 
+
+
 $(document).ready(function () {
   $("#businessYear, #legalEntity, #itf, #businessYearEnd").on(
     "change",
@@ -33,19 +35,7 @@ $(document).ready(function () {
             businessYearEnd + "/" + businessYear + " " + itf + " " + legalEntity
           );
           resultHtml +=
-            "<tr><td><input type=button id='addRow' value='Add row'/></td><td>" +
-            businessYearEnd +
-            "/" +
-            businessYearLoop +
-            "</td><td>" +
-            "<input type='test' value='" +
-            itf +
-            "'required/>";
-          "</td><td>" +
-            "<input type='test' value='" +
-            legalEntity +
-            "' required/>";
-          ("</td><td>N/A</td><td><input type=button id='deleteRow' value='Delete Row'/></td></tr>");
+            "<tr><td><input type='button' id='addRow' value='Add row'/></td><td><</td><td>"+itf+"</td><td>"+legalEntity+"</td><td></td></tr>"
           year--;
         }
       } else {
@@ -58,8 +48,8 @@ $(document).ready(function () {
       return false;
     }
   );
-
-  $("#addRow").click(function () {
+  
+    $("#addRow").click(function () {
     var legalEntity = $("#legalEntity").val();
     var itf = $("#itf").val();
     var businessYearEnd = $("#businessYearEnd").val();
@@ -75,13 +65,15 @@ $(document).ready(function () {
       "/" +
       businessYearLoop +
       "</td><td>" +
-      "<input type='test' value='" +
-      itf +
-      "' required/>";
-    "</td><td>" + "<input type='test' value='" + legalEntity + "' required/>";
-    ("</td><td>N/A</td><td><input type=button id='deleteRow' value='Delete Row'/></td></tr>");
+      "<input type='text'value='"+itf+"' required/>"+
+      "</td><td>" +
+      "<input type='txst' value='"+legalEntity+"' required/>"
+      "</td><td>N/A<ttd><td><input type=button id='deleteRow' value='Delete Row'/></td></tr>";
     $("#form-table").append(addRowAppend);
     console.log("value of input year on addRow: " + addRowInputYear);
     console.log("value of addRowIndex: " + addRowIndex);
   });
+  
 });
+
+
