@@ -51,7 +51,9 @@ to this section's matching END comment to see page-specific styles.
 table, th, td {
   border: 1px solid;
 }
-
+input .table{
+    width: 100%;
+}
 input:required {
   border-color: #800000;
   border-width: 3px;

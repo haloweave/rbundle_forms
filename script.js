@@ -5,7 +5,15 @@ $("#businessYear").datepicker({
   endDate: new Date(),
 });
 
+function RemoveMe(object) {
+  $(object).parents('tr').remove();
+}
 
+function addTableRow(object){
+  var addRowAppend =
+      "<tr><td><input type='button' id='addRow' value='+' onChange='addTableRow(this)'/></td><td><input type='text' value='' required/></td><td><input type='text' value='' required/></td><td><input type='text' value='' required/></td><td><input type='text' value='N/A' required/></td><td><input type='button' id='deleteRow' value='🗑️' onclick='RemoveMe(this)'/></td></tr>";
+    $(object).parents('tr').after(addRowAppend);
+}
 
 $(document).ready(function () {
   $("#businessYear, #legalEntity, #itf, #businessYearEnd").on(
@@ -35,7 +43,7 @@ $(document).ready(function () {
             businessYearEnd + "/" + businessYear + " " + itf + " " + legalEntity
           );
           resultHtml +=
-            "<tr><td><input type='button' id='addRow' value='Add row'/></td><td><input type='text' value='"+businessYearEnd+"/"+businessYear+"' required/></td><td><input type='text' value='"+itf+"' required/></td><td><input type='text' value='"+legalEntity+"' required/></td><td><input type='text' value='N/A' required/></td><td><input type='button' id='deleteRow' value='Delete Row'/></td></tr>"
+            "<tr id='table' ><td><input type='button' id='addRow' value='+' onClick='addTableRow(this)'/></td><td><input type='text' value='"+businessYearEnd+"/"+businessYear+"' required/></td><td><input type='text' value='"+itf+"' required/></td><td><input type='text' value='"+legalEntity+"' required/></td><td><input type='text' value='N/A' required/></td><td><input type='button' id='deleteRow' value='🗑️'onclick='RemoveMe(this)'/></td></tr>"
           year--;
         }
       } else {
@@ -48,14 +56,6 @@ $(document).ready(function () {
       return false;
     }
   );
-  
-    $("#addRow").on('click', function () {
-    console.log("this add row was clicked");
-    var addRowAppend =
-      "<tr><td><input type='button' id='addRow' value='Add row'/></td><td><input type='text' value='' required/></td><td><input type='text' value='' required/></td><td><input type='text' value='' required/></td><td><input type='text' value='N/A' required/></td><td><input type='button' id='deleteRow' value='Delete Row'/></td></tr>";
-    $("#form-table").append(addRowAppend);
-  });
-  
 });
 
 
