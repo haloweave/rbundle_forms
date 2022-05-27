@@ -22,11 +22,28 @@ $(document).ready(function () {
 
       if (!!businessYear && !!businessYearEnd && !!legalEntity && !!itf && !!rowNum) {
         for (var i = 1; i <= rowFinalNum + 1; i++) {
-          var loopYear = year;
+          var businessYearLoop = year;
           console.log(
             businessYearEnd + "/" + businessYear + " " + itf + " " + legalEntity
           );
-          resultHtml += "<tr>1 row</tr><td></td>"
+          resultHtml += 
+            "<thead>"
+              "<tr>"
+                "<th>&nbsp;</th>"
+                "<th>Tax Years</th>"
+                "<th>Fedral Income Tax Form</th>"
+                "<th>Legal Entity</th>"
+                "<th>Subject to BBA</th>"
+                "<th>&nbsp;</th>"
+              "</tr>"
+            "</thead>"
+              "<td></td>"
+              "<td>"+businessYearLoop+"</td>"
+              "<td></td>"
+              "<td></td>"
+              "<td></td>"
+              "<td></td>"
+              "<td></td>"
           year--;
         }
       } else {
