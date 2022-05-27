@@ -5,8 +5,6 @@ $("#businessYear").datepicker({
   endDate: new Date(),
 });
 
-
-
 $(document).ready(function () {
   $("#businessYear, #legalEntity, #itf, #businessYearEnd").on(
     "change",
@@ -39,10 +37,15 @@ $(document).ready(function () {
             businessYearEnd +
             "/" +
             businessYearLoop +
-            "</td><input type='text' placeholder='"+itf+"'/><td>"
             "</td><td>" +
+            "<input type='test' value='" +
+            itf +
+            "'required/>";
+          "</td><td>" +
+            "<input type='test' value='" +
             legalEntity +
-            "</td><td>N/A</td><td><input type=button id='deleteRow' value='Delete Row'/></td></tr>";
+            "' required/>";
+          ("</td><td>N/A</td><td><input type=button id='deleteRow' value='Delete Row'/></td></tr>");
           year--;
         }
       } else {
@@ -55,8 +58,8 @@ $(document).ready(function () {
       return false;
     }
   );
-  
-    $("#addRow").click(function () {
+
+  $("#addRow").click(function () {
     var legalEntity = $("#legalEntity").val();
     var itf = $("#itf").val();
     var businessYearEnd = $("#businessYearEnd").val();
@@ -71,15 +74,14 @@ $(document).ready(function () {
       businessYearEnd +
       "/" +
       businessYearLoop +
-      "</td><input type='text' placeholder='"+itf+"'/><td>"
       "</td><td>" +
-      legalEntity +
-      "</td><td>N/A</td><td><input type=button id='deleteRow' value='Delete Row'/></td></tr>";
+      "<input type='test' value='" +
+      itf +
+      "' required/>";
+    "</td><td>" + "<input type='test' value='" + legalEntity + "' required/>";
+    ("</td><td>N/A</td><td><input type=button id='deleteRow' value='Delete Row'/></td></tr>");
     $("#form-table").append(addRowAppend);
     console.log("value of input year on addRow: " + addRowInputYear);
     console.log("value of addRowIndex: " + addRowIndex);
   });
-  
 });
-
-
