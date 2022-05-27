@@ -35,7 +35,7 @@ $(document).ready(function () {
             businessYearEnd + "/" + businessYear + " " + itf + " " + legalEntity
           );
           resultHtml +=
-            "<tr><td><input type='button' id='addRow' value='Add row'/></td><td><</td><td>"+itf+"</td><td>"+legalEntity+"</td><td></td></tr>"
+            "<tr><td><input type='button' id='addRow' value='Add row'/></td><td><input type='text' value='"+businessYearEnd+"/"+businessYear+"' required/></td><td><input type='text' value='"+itf+"' required/></td><td><input type='text' value='"+legalEntity+"' required/></td><td><input type='text' value='N/A' required/></td><td><input type='button' id='deleteRow' value='Delete Row'/></td></tr>"
           year--;
         }
       } else {
@@ -50,28 +50,9 @@ $(document).ready(function () {
   );
   
     $("#addRow").click(function () {
-    var legalEntity = $("#legalEntity").val();
-    var itf = $("#itf").val();
-    var businessYearEnd = $("#businessYearEnd").val();
-    var businessYear = $("#businessYear").val();
-    var addRowInputYear = $("#businessYear").val();
-    const d = new Date();
-    let year = d.getFullYear();
-    var addRowIndex = year - addRowInputYear + 1;
-    var businessYearLoop = year;
     var addRowAppend =
-      "<tr><td><input type=button id='addRow' value='Add row'/></td><td>" +
-      businessYearEnd +
-      "/" +
-      businessYearLoop +
-      "</td><td>" +
-      "<input type='text'value='"+itf+"' required/>"+
-      "</td><td>" +
-      "<input type='txst' value='"+legalEntity+"' required/>"
-      "</td><td>N/A<ttd><td><input type=button id='deleteRow' value='Delete Row'/></td></tr>";
+      "<tr><td><input type='button' id='addRow' value='Add row'/></td><td><input type='text' value='' required/></td><td><input type='text' value='' required/></td><td><input type='text' value='' required/></td><td><input type='text' value='N/A' required/></td><td><input type='button' id='deleteRow' value='Delete Row'/></td></tr>";
     $("#form-table").append(addRowAppend);
-    console.log("value of input year on addRow: " + addRowInputYear);
-    console.log("value of addRowIndex: " + addRowIndex);
   });
   
 });
