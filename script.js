@@ -33,11 +33,13 @@ $(document).ready(function () {
         var loopYear = year;
         resultHtml +=
           "<tr>"
-          "<td>"+(i - 1)+"<input type='button' class='add' value='Addrow'></td>"
+          "<td><input type='button' class='add' value='Addrow'></td>"
           "<td><input type='name' placeholder='"+businessYearEnd+"/"+businessYear+"' value=''>"
-          "</td></td><td><input type='name' placeholder='text goes here...'' value=" +
-          loopYear +
-          "></td></tr>";
+          "<td><input type='name' placeholder='"+itf+"' value=''>"
+          "<td><input type='name' placeholder='"+legalEntity+"' value=''>"
+          "<td><input type='name' placeholder='N/A' value=''>"
+          "<td><input type='button' class='' value='Deleterow'></td>"
+          "</tr>";
         year--;
       }
     } else {
