@@ -71,7 +71,7 @@ $(document).ready(function () {
       console.log("value of rowNum: " + rowNum);
       console.log("value of i: " + i);
       table.html(resultHtml);
-      return false;
+      return true;
     }
   );
 });
