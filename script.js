@@ -62,9 +62,10 @@ $(document).ready(function () {
           resultHtml +=
             "<tr id='table' ><td><input type='button' id='addRow' value='+' onClick='addTableRow(this)'/></td><td id='currentYear'>Current year: "+(i-1)+"</td><td><input type='text' value='"+businessYearEnd+"/"+businessYear+"' required/></td><td><input type='text' value='"+itf+"' required/></td><td><input type='text' value='"+legalEntity+"' required/></td><td><input type='text' value='N/A' required/></td><td><input type='button' id='deleteRow' value='🗑️'onclick='RemoveMe(this)'/></td></tr>"
           year--;
+          console.log("inside table building loop");
         }
       } else {
-        console.log("row num is empty");
+        console.log("skipped table building loop");
       }
       console.log("value of rowFinalNum: " + rowFinalNum);
       console.log("value of rowNum: " + rowNum);
