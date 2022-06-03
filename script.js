@@ -11,7 +11,14 @@ $("#businessYear").datepicker({
   endDate: new Date(),
 });
 
-$( "#body-table" ).has( "#form-table" ).showEmptyCell();
+var body_table = $( "#body-table" );
+
+if( body_table.has("#form-table") ) {
+  console.log("table has loaded");
+}
+else {
+  console.log("table has not loaded")
+}
 
 function showEmptyCell() {
     $("#form-table td:empty").text("empty").css("background-color", "green");
