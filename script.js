@@ -15,13 +15,6 @@ function showDownloadButton() {
   $("#downloadButton").show();
 }
 
-$("#downloadButton").click(function(){
-  $("#form-table").table2excel({
-    name: "TAX Audit monitoring",
-    filename: "SomeFile", //do not include extension
-    fileext: ".xls" // file extension
-  }); 
-});
 
 function RemoveMe(object) {
   $(object).parents('tr').remove();
@@ -93,4 +86,12 @@ $(document).ready(function () {
       return true;
     }
   );
+  $("#downloadButton").click(function(){
+  $("#form-table").table2excel({
+    name: "TAX Audit monitoring",
+    filename: "TAX_Audit_Monitoring", //do not include extension
+    fileext: ".xls", // file extension
+    exclude_inputs:false
+  }); 
+});
 });
