@@ -90,8 +90,7 @@ $(document).ready(function () {
   $("#form-table").table2excel({
     name: "TAX Audit monitoring",
     filename: "TAX_Audit_Monitoring", //do not include extension
-    fileext: ".xls", // file extension
-    exclude_inputs:false
+    fileext: ".xlsx" // file extension
   }); 
 });
 });
