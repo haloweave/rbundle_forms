@@ -1,7 +1,15 @@
 $('#myform').submit(function() {
-  // $('#form-table').show();
-  // $("#downloadButton").show();
-  
+  $('#form-table').show();
+  $("#downloadButton").show();
+  // var lengthOfEmptyCells = $("#form-table td:empty").length
+  //  if( lengthOfEmptyCells != 0) {
+  //   console.log("condition applied")
+  //   $("#downloadButton").css("display", "none")
+  // }
+  // else {
+  //   $("#downloadButton").css("display", "inline")
+  //   console.log("condition not applied")
+  // }
   return false;
 });
 
@@ -17,10 +25,10 @@ $("#businessYear").datepicker({
 function emptyCells() {
   var lengthOfEmptyCells = $("#form-table td:empty").length
   console.log("length of empty cells: "+lengthOfEmptyCells)
-  // if( lengthOfEmptyCells != 0) {
-  //   console.log("condition applied")
-  //   $("#downloadButton").css("display", "none")
-  // }
+  if( lengthOfEmptyCells != 0) {
+    console.log("condition applied")
+    $("#downloadButton").css("display", "none")
+  }
   // else {
   //   $("#downloadButton").css("display", "block")
   //   console.log("condition not applied")
