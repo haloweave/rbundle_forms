@@ -13,11 +13,9 @@ $("#businessYear").datepicker({
 
 $( "#body-table" ).has( "#form-table" ).showEmptyCell();
 
-jQuery.fn.showEmptyCell = function() {
-  return this.each(function(){
+function showEmptyCell() {
     $("#form-table td:empty").text("empty").css("background-color", "green");
-  });
-};
+}
 
 
 function showDownloadButton() {
