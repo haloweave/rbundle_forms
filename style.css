@@ -71,9 +71,9 @@ input:invalid {
   display: none;
 }
 
-#downloadButton {
+/* #downloadButton {
   display:none;
-}
+} */
 
 
 #form-table tr td:empty {

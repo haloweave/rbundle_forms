@@ -1,6 +1,6 @@
 $('#myform').submit(function() {
   $('#form-table').show();
-  $("#downloadButton").show();
+  // $("#downloadButton").show();
   // var lengthOfEmptyCells = $("#form-table td:empty").length
   //  if( lengthOfEmptyCells != 0) {
   //   console.log("condition applied")
@@ -10,6 +10,7 @@ $('#myform').submit(function() {
   //   $("#downloadButton").css("display", "inline")
   //   console.log("condition not applied")
   // }
+  emptyCells();
   return false;
 });
 
@@ -28,11 +29,12 @@ function emptyCells() {
   if( lengthOfEmptyCells != 0) {
     console.log("condition applied")
     $("#downloadButton").css("display", "none")
+    
   }
-  // else {
-  //   $("#downloadButton").css("display", "block")
-  //   console.log("condition not applied")
-  // }
+  else {
+    $("#downloadButton").css("display", "inline")
+    console.log("condition not applied")
+  }
 }
 
 function ExportToExcel(type, fn, dl) {
@@ -72,6 +74,7 @@ function renumberRows() {
 
 $(document).ready(function () {
   console.log("document ready log")
+  $("#downloadButton").css("display","none")
   $("#businessYear, #legalEntity, #itf, #businessYearEnd").on(
     "change",
     function () {
@@ -110,7 +113,7 @@ $(document).ready(function () {
       } else {
         console.log("skipped table building loop");
       }
-      emptyCells();
+      // emptyCells();
       table.html(resultHtml);
       return true;
     }
