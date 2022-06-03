@@ -11,6 +11,18 @@ $("#businessYear").datepicker({
   endDate: new Date(),
 });
 
+function showDownloadButton() {
+  $("#downloadButton").show();
+}
+
+$("#downloadButton").click(function(){
+  $("#form-table").table2excel({
+    name: "TAX Audit monitoring",
+    filename: "SomeFile", //do not include extension
+    fileext: ".xls" // file extension
+  }); 
+});
+
 function RemoveMe(object) {
   $(object).parents('tr').remove();
   renumberRows();
@@ -44,6 +56,7 @@ $(document).ready(function () {
       var businessYearEnd = $("#businessYearEnd").val();
       var businessYear = $("#businessYear").val();
       var table = $("#form-table tbody");
+      var downloadButton = $("#downloadButton");
       var rowNum = $("#businessYear").val();
       const d = new Date();
       let year = d.getFullYear();
@@ -66,7 +79,7 @@ $(document).ready(function () {
             businessYearEnd + "/" + businessYear + " " + itf + " " + legalEntity
           );
           resultHtml +=
-            "<tr id='table' ><td><input type='button' id='addRow' value='+' onClick='addTableRow(this)'/></td><td id='currentYear'>Current year: "+(i-1)+"</td><td><input type='text' value='"+businessYearEnd+"/"+businessYear+"' required/></td><td><input type='text' value='"+itf+"' required/></td><td><input type='text' value='"+legalEntity+"' required/></td><td><input type='text' value='N/A' required/></td><td><input type='button' id='deleteRow' value='🗑️'onclick='RemoveMe(this)'/></td></tr>"
+            "<tr id='table' ><td><input type='button' id='addRow' value='+' onClick='addTableRow(this)'/></td><td id='currentYear'>Current year: "+(i-1)+"</td><td><input type='text' value='"+businessYearEnd+"/"+year+"' required/></td><td><input type='text' value='"+itf+"' required/></td><td><input type='text' value='"+legalEntity+"' required/></td><td><input type='text' value='N/A' required/></td><td><input type='button' id='deleteRow' value='🗑️'onclick='RemoveMe(this)'/></td></tr>"
           year--;
           console.log("inside table building loop");
         }
@@ -78,18 +91,6 @@ $(document).ready(function () {
       console.log("value of i: " + i);
       table.html(resultHtml);
       return true;
-       if (
-        !!businessYear &&
-        !!businessYearEnd &&
-        !!legalEntity &&
-        !!itf &&
-        !!rowNum
-      ) {
-      showDownloadButton += "<button>Download Button</button>"
-  } else {
-    console.log("button is waiting for all inputs to be filled")
-  }
-      body.html(showDownloadButton);
     }
   );
 });
