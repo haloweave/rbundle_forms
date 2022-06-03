@@ -45,10 +45,6 @@ function renumberRows() {
     $('table#form-table tbody tr').each(function(index) {
         $(this).children('#currentYear').text("Current Year: "+ (index+1) );
         console.log("renumber is running!");
-        console.log("number of empty cells: "+$('#form-table td:empty').length);
-        $("#form-table td").blur(function(){
-        alert("This input field has lost its focus.");
-        });
     });
 }
 
@@ -96,6 +92,7 @@ $(document).ready(function () {
       console.log("value of i: " + i);
       table.html(resultHtml);
       return true;
+      
     }
   );
 });
