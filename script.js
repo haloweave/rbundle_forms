@@ -15,7 +15,7 @@ function showDownloadButton() {
   $("#downloadButton").show();
 }
 
-
+console.log("first log")
 
 function ExportToExcel(type, fn, dl) {
        var elt = document.getElementById('form-table');
@@ -51,6 +51,7 @@ function renumberRows() {
 
 
 $(document).ready(function () {
+  console.log("document ready log")
   $("#businessYear, #legalEntity, #itf, #businessYearEnd").on(
     "change",
     function () {
@@ -95,3 +96,9 @@ $(document).ready(function () {
   );
 });
 
+$(document).ready(function () {
+
+  var lengthOfEmptyCells = $("#form-table td:empty").length
+  console.log(length)
+  
+});
