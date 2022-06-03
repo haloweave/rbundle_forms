@@ -3,9 +3,6 @@ $('#myform').submit(function() {
   return false;
 });
 
-
-$("#form-table td:empty").("table cell empty");
-
 let tableRowSize=0;
 $("#businessYear").datepicker({
   format: "yyyy",
@@ -13,6 +10,15 @@ $("#businessYear").datepicker({
   minViewMode: "years",
   endDate: new Date(),
 });
+
+$( "#body-table" ).has( "#form-table" ).showEmptyCell();
+
+jQuery.fn.showEmptyCell = function() {
+  return this.each(function(){
+    $("#form-table td:empty").text("empty").css("background-color", "green");
+  });
+};
+
 
 function showDownloadButton() {
   $("#downloadButton").show();
