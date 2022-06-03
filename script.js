@@ -15,7 +15,10 @@ function showDownloadButton() {
   $("#downloadButton").show();
 }
 
-console.log("first log")
+function emptyCells() {
+  var lengthOfEmptyCells = $("#form-table td:empty").length
+  console.log("length of empty cells: "+lengthOfEmptyCells)
+}
 
 function ExportToExcel(type, fn, dl) {
        var elt = document.getElementById('form-table');
@@ -30,6 +33,7 @@ function RemoveMe(object) {
   renumberRows();
     tableRowSize--;
     console.log("tableRowSize on delete: "+tableRowSize);
+    emptyCells();
 }
 
 function addTableRow(object){
@@ -40,6 +44,7 @@ function addTableRow(object){
   console.log("add row function is running");
   console.log("tableRowSize on add: "+tableRowSize);
   renumberRows();
+  emptyCells();
 }
 
 function renumberRows() {
@@ -90,15 +95,9 @@ $(document).ready(function () {
       } else {
         console.log("skipped table building loop");
       }
+      emptyCells();
       table.html(resultHtml);
       return true;
     }
   );
-});
-
-$(document).ready(function () {
-
-  var lengthOfEmptyCells = $("#form-table td:empty").length
-  console.log(length)
-  
 });
