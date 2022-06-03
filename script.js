@@ -16,7 +16,7 @@ function showDownloadButton() {
 }
 
 function ExportToExcel(type, fn, dl) {
-       var elt = document.getElementById('tbl_exporttable_to_xls');
+       var elt = document.getElementById('form-table');
        var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
        return dl ?
          XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
@@ -79,7 +79,7 @@ $(document).ready(function () {
             businessYearEnd + "/" + businessYear + " " + itf + " " + legalEntity
           );
           resultHtml +=
-            "<tr id='table' ><td><input type='button' id='addRow' value='+' onClick='addTableRow(this)'/></td><td id='currentYear'>Current year: "+(i-1)+"</td><td><input type='text' value='"+businessYearEnd+"/"+year+"' required/></td><td><input type='text' value='"+itf+"' required/></td><td><input type='text' value='"+legalEntity+"' required/></td><td><input type='text' value='N/A' required/></td><td><input type='button' id='deleteRow' value='🗑️'onclick='RemoveMe(this)'/></td></tr>"
+            "<tr id='table' ><td><input type='button' id='addRow' value='+' onClick='addTableRow(this)'/></td><td id='currentYear'>Current year: "+(i-1)+"</td><td contenteditable>"+businessYearEnd+"/"+year+"</td><td><input type='text' value='"+itf+"' required></td><td><input type='text' value='"+legalEntity+"' required/></td><td><input type='text' value='N/A' required/></td><td><input type='button' id='deleteRow' value='🗑️'onclick='RemoveMe(this)'/></td></tr>"
           year--;
           console.log("inside table building loop");
         }
@@ -93,11 +93,4 @@ $(document).ready(function () {
       return true;
     }
   );
-  $("#downloadButton").click(function(){
-  $("#form-table").table2excel({
-    name: "TAX Audit monitoring",
-    filename: "TAX_Audit_Monitoring", //do not include extension
-    fileext: ".xlsx" // file extension
-  }); 
-});
 });
