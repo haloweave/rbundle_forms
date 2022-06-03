@@ -1,10 +1,6 @@
 $('#myform').submit(function() {
-  $('#form-table').show();
-  var lengthOfEmptyCells = $("#form-table td:empty").length
-  if( lengthOfEmptyCells != 0) {
-    console.log("condition applied")
-    $("#downloadButton").css("display","none")
-  }
+  // $('#form-table').show();
+  // $("#downloadButton").show();
   
   return false;
 });
