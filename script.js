@@ -1,8 +1,7 @@
-function showTable()
-{
-    document.getElementById('mytable').style.visibility = 'visible';//shows the table
-    return false; //tells the form not to actaully load the action page
-}
+$('#myform').submit(function() {
+  $('#form-table').show();
+  return false;
+});
 
 let tableRowSize=0;
 $("#businessYear").datepicker({
