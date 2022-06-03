@@ -11,7 +11,7 @@ $("#businessYear").datepicker({
   endDate: new Date(),
 })
 
-if($('#form-table').css('display') == 'none')
+if($('#form-table').css('display') == 'block')
 {
   console.log("table has loaded");
 }
