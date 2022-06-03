@@ -11,13 +11,16 @@ $("#businessYear").datepicker({
   endDate: new Date(),
 })
 
-function showDownloadButton() {
-  $("#downloadButton").show();
-}
 
 function emptyCells() {
   var lengthOfEmptyCells = $("#form-table td:empty").length
   console.log("length of empty cells: "+lengthOfEmptyCells)
+  if( lengthOfEmptyCells == 0) {
+    $("#downloadButton").css("display", "inline")
+  }
+  else {
+    $("#downloadButton").css("visibility", "hidden")
+  }
 }
 
 function ExportToExcel(type, fn, dl) {
