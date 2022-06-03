@@ -9,11 +9,10 @@ $("#businessYear").datepicker({
   viewMode: "years",
   minViewMode: "years",
   endDate: new Date(),
-});
+})
 
-var body_table = $( "#body-table" );
-
-if( body_table.has("#form-table") ) {
+if($('#form-table').css('display') == 'none')
+{
   console.log("table has loaded");
 }
 else {
