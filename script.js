@@ -1,3 +1,9 @@
+function showTable()
+{
+    document.getElementById('mytable').style.visibility = 'visible';//shows the table
+    return false; //tells the form not to actaully load the action page
+}
+
 let tableRowSize=0;
 $("#businessYear").datepicker({
   format: "yyyy",
