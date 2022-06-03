@@ -49,13 +49,6 @@ function renumberRows() {
     });
 }
 
-      if($("#form-table td:empty").length > 0 ) {
-        $("#downloadButton").css("display", "none")
-        console.log("length of empty cells: "+$("#form-table td:empty").length)
-      }
-      else {
-        console.log("there are empty cells")
-      }
 
 $(document).ready(function () {
   $("#businessYear, #legalEntity, #itf, #businessYearEnd").on(
@@ -96,9 +89,6 @@ $(document).ready(function () {
       } else {
         console.log("skipped table building loop");
       }
-      console.log("value of rowFinalNum: " + rowFinalNum);
-      console.log("value of rowNum: " + rowNum);
-      console.log("value of i: " + i);
       table.html(resultHtml);
       return true;
     }
