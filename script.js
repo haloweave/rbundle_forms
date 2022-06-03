@@ -15,11 +15,13 @@ $("#businessYear").datepicker({
 function emptyCells() {
   var lengthOfEmptyCells = $("#form-table td:empty").length
   console.log("length of empty cells: "+lengthOfEmptyCells)
-  if( lengthOfEmptyCells == 0) {
-    $("#downloadButton").css("display", "inline")
+  if( lengthOfEmptyCells != 0) {
+    console.log("condition applied")
+    $("#downloadButton").css("display", "none")
   }
   else {
-    $("#downloadButton").css("visibility", "hidden")
+    $("#downloadButton").css("display", "inline")
+    console.log("condition not applied")
   }
 }
 
