@@ -49,6 +49,7 @@ $(document).ready(function () {
       let year = d.getFullYear();
       var rowFinalNum = year - rowNum;
       var resultHtml = "";
+      var showDownloadButton = "";
 
       if (
         !!businessYear &&
@@ -77,6 +78,18 @@ $(document).ready(function () {
       console.log("value of i: " + i);
       table.html(resultHtml);
       return true;
+       if (
+        !!businessYear &&
+        !!businessYearEnd &&
+        !!legalEntity &&
+        !!itf &&
+        !!rowNum
+      ) {
+      showDownloadButton += "<button>Download Button</button>"
+  } else {
+    console.log("button is waiting for all inputs to be filled")
+  }
+      body.html(showDownloadButton);
     }
   );
 });
