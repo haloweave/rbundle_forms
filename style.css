@@ -72,7 +72,7 @@ input:invalid {
 }
 
 #downloadButton {
-  display:inline;
+  display:none;
 }
 
 
