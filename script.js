@@ -3,6 +3,9 @@ $('#myform').submit(function() {
   return false;
 });
 
+
+$("#form-table td:empty").("table cell empty");
+
 let tableRowSize=0;
 $("#businessYear").datepicker({
   format: "yyyy",
@@ -95,6 +98,3 @@ $(document).ready(function () {
   );
 });
 
-$( document ).ready(function(){
-$("#form-table td:empty").text("Was empty").css('background', 'rgb(255,220,200)');
-});
