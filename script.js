@@ -43,6 +43,7 @@ function ExportToExcel(type, fn, dl) {
 }
 
 function saveFormAsTextFile() {
+  console.log("i've been clicked")
   $("#businessYear, #legalEntity, #itf, #businessYearEnd").on(
     "change",
     function () {
@@ -54,6 +55,7 @@ function saveFormAsTextFile() {
         $("#businessYear").val() +
         "\n" +
         $("#legalEntity").val();
+      console.log("i've LOGGED values: "+fieldsToSave)
       var fieldsToSaveAsBlob = new Blob([fieldsToSave], {
         type: "text/plain",
       });
