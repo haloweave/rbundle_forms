@@ -76,6 +76,40 @@ function destroyClickedElement(event) {
   document.body.removeChild(event.target);
 }
 
+(function() {
+  var input = document.getElementById("fileinput");
+  input.addEventListener("change", loadFile, false);
+
+  function loadFile() {
+    var file, fr;
+
+    if (typeof window.FileReader !== 'function') {
+      alert("The file API isn't supported on this browser yet.");
+      return;
+    }
+
+    if (!input.files) {
+      alert("This browser doesn't seem to support the `files` property of file inputs.");
+    } else if (!input.files[0]) {
+      alert("Please select a file before clicking 'Load'");
+    } else {
+      file = input.files[0];
+      fr = new FileReader();
+      fr.onload = receivedText;
+      fr.readAsText(file);
+    }
+
+    function receivedText() {
+      var data = fr.result.split('\n');
+      document.getElementById("itf").value = data[0];
+      document.getElementById("businessYearEnd").value = data[1];
+      document.getElementById("businessYear").value = data[2];
+      document.getElementById("legalEntity").value = data[3];
+    }
+  }
+})();
+
+
 function RemoveMe(object) {
   $(object).parents("tr").remove();
   renumberRows();
