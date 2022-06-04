@@ -167,7 +167,6 @@ $(document).ready(function () {
       let year = d.getFullYear();
       var rowFinalNum = year - rowNum;
       var resultHtml = "";
-      var showDownloadButton = "";
 
       if (
         !!businessYear &&
