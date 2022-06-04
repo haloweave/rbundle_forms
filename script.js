@@ -102,10 +102,14 @@ function destroyClickedElement(event) {
 
     function receivedText() {
       var data = fr.result.split('\n');
-      document.getElementById("itf").value = data[0];
-      document.getElementById("businessYearEnd").value = data[1];
-      document.getElementById("businessYear").value = data[2];
-      document.getElementById("legalEntity").value = data[3];
+      $("#itf").val = data[0];
+      $("#businessYearEnd").val = data[1];
+      $("#businessYear").val = data[2];
+      $("#legalEntity").val = data[3];
+      // document.getElementById("itf").value = data[0];
+      // document.getElementById("businessYearEnd").value = data[1];
+      // document.getElementById("businessYear").value = data[2];
+      // document.getElementById("legalEntity").value = data[3];
       for(var i = 0 ;i < 4 ; i++ ){
         console.log("value of input is: "+$("#legalEntity").val())
         console.log("length of the data["+i+"] variable is: "+data[i].length)
