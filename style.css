@@ -87,3 +87,7 @@ input:invalid {
   background-color: beige;
   opacity: 0.36;
 }
+
+.save_upload_buttons_container {
+  display: flex;
+}

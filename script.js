@@ -53,7 +53,7 @@ function downloadtext() {
     type: "text/plain"
   });
   var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
-  var fileNameToSaveAs = document.getElementById("form-table").value;
+  var fileNameToSaveAs = "text"
 
   var downloadLink = document.createElement("a");
   downloadLink.download = fileNameToSaveAs;
@@ -65,6 +65,9 @@ function downloadtext() {
 
   downloadLink.click();
         }
+function destroyClickedElement(event) {
+  document.body.removeChild(event.target);
+}
 
 function RemoveMe(object) {
   $(object).parents('tr').remove();

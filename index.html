@@ -36,15 +36,26 @@
     <script src="./script.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"
+    ></script>
   </head>
   <body>
-    <h1 class="main-heading">REQUEST FOR PROPOSAL (RFP) BUILDER</h1>
-    <br /><br />
-    <h3 class="sub-heading">IRS AUDIT MONITORING</h3>
-
-    <h3>SERVICE ELIGIBILITY QUESTIONS</h3>
-    <br /><br />
+    <div class="heading">
+      <div class="save_upload_buttons_container">
+        <button onclick="saveFormAsTextFile()">Save</button>
+        <button>
+          <label></label>
+          <input type="file" id="fileinput" accept=".txt" style="display:none;"/>
+        </button>
+      </div>
+      <h1 class="main-heading">REQUEST FOR PROPOSAL (RFP) BUILDER</h1>
+      <br /><br />
+      <h3 class="sub-heading">IRS AUDIT MONITORING</h3>
+      <h3>SERVICE ELIGIBILITY QUESTIONS</h3>
+      <br /><br />
+    </div>
 
     <form action="" id="myform" method="get">
       <label for="itf"
@@ -62,32 +73,29 @@
         >What kind of legal entity is the business?
       </label>
       <input type="text" id="legalEntity" required />
-      <br/><br/>
-<!--       <input type="submit" value="Generate Table"/> -->
+      <br /><br />
+      <!--       <input type="submit" value="Generate Table"/> -->
     </form>
     <br /><br />
     <div id="body-table">
-    <table id="form-table" style="width: 60%">
-      <thead>
-        <tr>
-          <th>&nbsp;</th>
-          <th>&nbsp;</th>
-          <th>Tax Years</th>
-          <th>Federal Income Tax Form</th>
-          <th>Legal Entity</th>
-          <th>Subject to bba</th>
-          <th>&nbsp;</th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
+      <table id="form-table" style="width: 60%">
+        <thead>
+          <tr>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+            <th>Tax Years</th>
+            <th>Federal Income Tax Form</th>
+            <th>Legal Entity</th>
+            <th>Subject to bba</th>
+            <th>&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
     <button id="downloadButton" onclick="ExportToExcel('xlsx')">
       Download csv
     </button>
-    <button id="downloadtext" onclick="downloadtext()">
-      Download text
-    </button>
+    <button id="downloadtext" onclick="downloadtext()">Download text</button>
   </body>
 </html>
