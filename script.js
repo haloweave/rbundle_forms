@@ -113,7 +113,7 @@ $(document).ready(function () {
       } else {
         console.log("skipped table building loop");
       }
-      // emptyCells();
+      emptyCells();
       table.html(resultHtml);
       return true;
     }
