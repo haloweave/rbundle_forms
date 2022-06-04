@@ -207,6 +207,7 @@ $(document).ready(function () {
           emptyCells();
         }
       } else {
+        $("#form-table").css("display", "none");
         console.log("skipped table building loop");
       }
       table.html(resultHtml);
