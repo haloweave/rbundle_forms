@@ -55,7 +55,7 @@ function RemoveMe(object) {
 
 function addTableRow(object){
   var addRowAppend =
-      "<tr><td><input type='button' id='addRow' value='+' onClick='addTableRow(this)'/></td><td id='currentYear'></td>Current year: <td contenteditable></td><td contenteditable></td><td contenteditable></td><td>N/A</td><td><input type='button' id='deleteRow' value='🗑️' onclick='RemoveMe(this)'/></td></tr>";
+      "<tr><td><input type='button' id='addRow' value='+' onClick='addTableRow(this)'/></td><td id='currentYear'></td>Current year: <td contenteditable onkeyup='tdCheck(this)'></td><td contenteditable onkeyup='tdCheck(this)'></td><td contenteditable onkeyup='tdCheck(this)'></td><td contenteditable onkeyup='tdCheck(this)'>N/A</td><td><input type='button' id='deleteRow' value='🗑️' onclick='RemoveMe(this)'/></td></tr>";
     $(object).parents('tr').after(addRowAppend);
   tableRowSize++;
   console.log("add row function is running");
@@ -73,23 +73,17 @@ function renumberRows() {
 
 function tdCheck(check)
 {
-    var data = check.innerHTML;
-    console.log("value of num is: "+num);
-    console.log(isNaN(num));
-    console.log("length of td: "+num.length)
-    
-    num = parseInt(num, 10);
-    if(!isNaN(num))
+    var tdData = check.innerHTML;
+    console.log("value of num is: "+tdData);
+    console.log("length of td: "+tdData.length)
+    if( tdData.length > 0)
     {
-    	if(num < 1 ){
-    		ctrl.innerHTML="";
-    		alert("Please Enter a Number Between 1 and 9.");
-    	}
+    	console.log("td is not empty")
+      emptyCells();
     }
     else
     {
-        ctrl.innerHTML="";
-        alert('Please enter digits only');
+      console.log("td is empty")
     }
 }
 
