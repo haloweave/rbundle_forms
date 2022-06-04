@@ -179,7 +179,8 @@ $(document).ready(function () {
         !!businessYearEnd &&
         !!legalEntity &&
         !!itf &&
-        !!rowNum
+        !!rowNum &&
+        (rowNum <= year && rowNum >= 1990)
       ) {
         $("#form-table").css("display", "block");
         for (var i = 1; i <= rowFinalNum + 1; i++) {
