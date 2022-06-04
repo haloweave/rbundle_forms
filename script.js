@@ -105,6 +105,12 @@ function destroyClickedElement(event) {
       document.getElementById("businessYearEnd").value = data[1];
       document.getElementById("businessYear").value = data[2];
       document.getElementById("legalEntity").value = data[3];
+      console.log("length of the data variable is: "+data.length)
+//       if (){
+        
+//       } else {
+        
+//       }
     }
   }
 })();
