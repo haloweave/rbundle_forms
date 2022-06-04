@@ -45,12 +45,25 @@ function ExportToExcel(type, fn, dl) {
          XLSX.writeFile(wb, fn || ('MySheetName.' + (type || 'xlsx')));
     }
 
-function saveDynamicDataToFile() {
+function downloadtext() {
 
-            var userInput = document.getElementById("form-table").value;
+            var textToSave = document.getElementById("form-table").value;
 			
-            var blob = new Blob([userInput], { type: "text/plain;charset=utf-8" });
-            saveAs(blob, "dynamic.txt");
+            var textToSaveAsBlob = new Blob([textToSave], {
+    type: "text/plain"
+  });
+  var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+  var fileNameToSaveAs = document.getElementById("form-table").value;
+
+  var downloadLink = document.createElement("a");
+  downloadLink.download = fileNameToSaveAs;
+  downloadLink.innerHTML = "Download File";
+  downloadLink.href = textToSaveAsURL;
+  downloadLink.onclick = destroyClickedElement;
+  downloadLink.style.display = "none";
+  document.body.appendChild(downloadLink);
+
+  downloadLink.click();
         }
 
 function RemoveMe(object) {
