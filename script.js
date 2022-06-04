@@ -15,6 +15,7 @@
 // });
 
 let tableRowSize = 0;
+let uploadFileBool = false;
 $("#businessYear").datepicker({
   format: "yyyy",
   viewMode: "years",
@@ -106,10 +107,11 @@ function destroyClickedElement(event) {
       document.getElementById("businessYear").value = data[2];
       document.getElementById("legalEntity").value = data[3];
       for(var i = 0 ;i < 4 ; i++ ){
-        console.l
+        console.log("value of input is: "+$("#legalEntity").val())
         console.log("length of the data["+i+"] variable is: "+data[i].length)
       }
       if((data[0].length != 0) && (data[1].length != 0) && (data[2].length != 0) && (data[3].length != 0)) {
+        uploadFileBool = true;
         console.log("Saved file has all inputs");
         
       } else {
@@ -168,7 +170,7 @@ function tdCheck(check) {
 
 $(document).ready(function () {
   console.log("document ready log");
-
+  console.log("value of input is: "+$("#legalEntity").val())
   $("#downloadButton").css("display", "none");
   $("#businessYear, #legalEntity, #itf, #businessYearEnd").on(
     "change",
@@ -227,4 +229,5 @@ $(document).ready(function () {
       return true;
     }
   );
+  }
 });
