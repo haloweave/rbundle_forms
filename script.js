@@ -111,7 +111,7 @@ function destroyClickedElement(event) {
         console.log("length of the data["+i+"] variable is: "+data[i].length)
       }
       if((data[0].length != 0) && (data[1].length != 0) && (data[2].length != 0) && (data[3].length != 0)) {
-        uploadFileBool = true;
+        
         console.log("Saved file has all inputs");
         
       } else {
@@ -229,5 +229,4 @@ $(document).ready(function () {
       return true;
     }
   );
-  }
 });
