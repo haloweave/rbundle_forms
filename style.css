@@ -67,9 +67,9 @@ input:invalid {
   background-color: #ffdddd;
 }
 
-/* #form-table {
+#form-table {
   display: none;
-} */
+}
 
 /* #downloadButton {
   display:none;
@@ -90,4 +90,17 @@ input:invalid {
 
 .save_upload_buttons_container {
   display: flex;
+}
+
+.question_and_button_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+#saveButton {
+  margin-right: 1rem;
+}
+
+#uploadProgressButton {
+  margin-right: 1rem;
 }

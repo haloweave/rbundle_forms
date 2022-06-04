@@ -138,6 +138,7 @@ $(document).ready(function () {
         !!itf &&
         !!rowNum
       ) {
+        $("#form-table").css("display","block")
         for (var i = 1; i <= rowFinalNum + 1; i++) {
           var businessYearLoop = year;
           tableRowSize++;

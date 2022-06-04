@@ -43,17 +43,24 @@
   </head>
   <body>
     <div class="heading">
-      <div class="save_upload_buttons_container">
-        <button onclick="saveFormAsTextFile()">Save</button>
-        <button>
-          <label></label>
-          <input type="file" id="fileinput" accept=".txt" style="display:none;"/>
-        </button>
-      </div>
       <h1 class="main-heading">REQUEST FOR PROPOSAL (RFP) BUILDER</h1>
       <br /><br />
       <h3 class="sub-heading">IRS AUDIT MONITORING</h3>
-      <h3>SERVICE ELIGIBILITY QUESTIONS</h3>
+      <div class="question_and_button_container">
+        <h3>SERVICE ELIGIBILITY QUESTIONS</h3>
+        <div class="save_upload_buttons_container">
+          <button onclick="saveFormAsTextFile()" id="saveButton">Save progress</button>
+          <button id="uploadProgressInput">
+            <label for="fileinput">Upload saved file</label>
+            <input
+              type="file"
+              id="uploadProgressInput"
+              accept=".txt"
+              style="display: none"
+            />
+          </button>
+        </div>
+      </div>
       <br /><br />
     </div>
 
@@ -96,6 +103,5 @@
     <button id="downloadButton" onclick="ExportToExcel('xlsx')">
       Download csv
     </button>
-    <button id="downloadtext" onclick="downloadtext()">Download text</button>
   </body>
 </html>
