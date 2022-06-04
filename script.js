@@ -14,107 +14,111 @@
 //   return false;
 // });
 
-let tableRowSize=0;
+let tableRowSize = 0;
 $("#businessYear").datepicker({
   format: "yyyy",
   viewMode: "years",
   minViewMode: "years",
   endDate: new Date(),
-})
-
+});
 
 function emptyCells() {
-  var lengthOfEmptyCells = $("#form-table td:empty").length
-  console.log("length of empty cells: "+lengthOfEmptyCells)
-  if( lengthOfEmptyCells != 0) {
-    console.log("condition applied")
-    $("#downloadButton").css("display", "none")
-    
-  }
-  else {
-    $("#downloadButton").css("display", "inline")
-    console.log("condition not applied")
+  var lengthOfEmptyCells = $("#form-table td:empty").length;
+  console.log("length of empty cells: " + lengthOfEmptyCells);
+  if (lengthOfEmptyCells != 0) {
+    console.log("condition applied");
+    $("#downloadButton").css("display", "none");
+  } else {
+    $("#downloadButton").css("display", "inline");
+    console.log("condition not applied");
   }
 }
 
 function ExportToExcel(type, fn, dl) {
-       var elt = document.getElementById('form-table');
-       var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
-       return dl ?
-         XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
-         XLSX.writeFile(wb, fn || ('MySheetName.' + (type || 'xlsx')));
+  var elt = document.getElementById("form-table");
+  var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+  return dl
+    ? XLSX.write(wb, { bookType: type, bookSST: true, type: "base64" })
+    : XLSX.writeFile(wb, fn || "MySheetName." + (type || "xlsx"));
+}
+
+function saveFormAsTextFile() {
+  $("#businessYear, #legalEntity, #itf, #businessYearEnd").on(
+    "change",
+    function () {
+      var fieldsToSave =
+        $("#itf").val() +
+        "\n" +
+        $("#businessYearEnd").val() +
+        "\n" +
+        $("#businessYear").val() +
+        "\n" +
+        $("#legalEntity").val();
+      var fieldsToSaveAsBlob = new Blob([fieldsToSave], {
+        type: "text/plain",
+      });
+      var fieldsToSaveAsURL = window.URL.createObjectURL(fieldsToSaveAsBlob);
+      var fileNameToSaveAs = "Form progress";
+      var downloadLink = document.createElement("a");
+      downloadLink.download = fileNameToSaveAs;
+      downloadLink.innerHTML = "Download File";
+      downloadLink.href = fieldsToSaveAsURL;
+      downloadLink.onclick = destroyClickedElement;
+      downloadLink.style.display = "none";
+      document.body.appendChild(downloadLink);
+      
+      downloadLink.click();
     }
+  );
+}
 
-function downloadtext() {
-
-            var textToSave = document.getElementById("form-table").value;
-			
-            var textToSaveAsBlob = new Blob([textToSave], {
-    type: "text/plain"
-  });
-  var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
-  var fileNameToSaveAs = "text"
-
-  var downloadLink = document.createElement("a");
-  downloadLink.download = fileNameToSaveAs;
-  downloadLink.innerHTML = "Download File";
-  downloadLink.href = textToSaveAsURL;
-  downloadLink.onclick = destroyClickedElement;
-  downloadLink.style.display = "none";
-  document.body.appendChild(downloadLink);
-
-  downloadLink.click();
-        }
 function destroyClickedElement(event) {
   document.body.removeChild(event.target);
 }
 
 function RemoveMe(object) {
-  $(object).parents('tr').remove();
+  $(object).parents("tr").remove();
   renumberRows();
-    tableRowSize--;
-    console.log("tableRowSize on delete: "+tableRowSize);
-    emptyCells();
+  tableRowSize--;
+  console.log("tableRowSize on delete: " + tableRowSize);
+  emptyCells();
 }
 
-function addTableRow(object){
+function addTableRow(object) {
   var addRowAppend =
-      "<tr><td><input type='button' id='addRow' value='+' onClick='addTableRow(this)'/></td><td id='currentYear'></td>Current year: <td contenteditable onkeyup='tdCheck(this)'></td><td contenteditable onkeyup='tdCheck(this)'></td><td contenteditable onkeyup='tdCheck(this)'></td><td contenteditable onkeyup='tdCheck(this)'>N/A</td><td><input type='button' id='deleteRow' value='🗑️' onclick='RemoveMe(this)'/></td></tr>";
-    $(object).parents('tr').after(addRowAppend);
+    "<tr><td><input type='button' id='addRow' value='+' onClick='addTableRow(this)'/></td><td id='currentYear'></td>Current year: <td contenteditable onkeyup='tdCheck(this)'></td><td contenteditable onkeyup='tdCheck(this)'></td><td contenteditable onkeyup='tdCheck(this)'></td><td contenteditable onkeyup='tdCheck(this)'>N/A</td><td><input type='button' id='deleteRow' value='🗑️' onclick='RemoveMe(this)'/></td></tr>";
+  $(object).parents("tr").after(addRowAppend);
   tableRowSize++;
   console.log("add row function is running");
-  console.log("tableRowSize on add: "+tableRowSize);
+  console.log("tableRowSize on add: " + tableRowSize);
   renumberRows();
   emptyCells();
 }
 
 function renumberRows() {
-    $('table#form-table tbody tr').each(function(index) {
-        $(this).children('#currentYear').text("Current Year: "+ (index+1) );
-        console.log("renumber is running!");
-    });
+  $("table#form-table tbody tr").each(function (index) {
+    $(this)
+      .children("#currentYear")
+      .text("Current Year: " + (index + 1));
+    console.log("renumber is running!");
+  });
 }
 
-function tdCheck(check)
-{
-    var tdData = check.innerHTML;
-    console.log("value of num is: "+tdData);
-    console.log("length of td: "+tdData.length)
-    if( tdData.length > 0)
-    {
-    	console.log("td is not empty")
-      emptyCells();
-    }
-    else
-    {
-      console.log("td is empty")
-    }
+function tdCheck(check) {
+  var tdData = check.innerHTML;
+  console.log("value of num is: " + tdData);
+  console.log("length of td: " + tdData.length);
+  if (tdData.length > 0) {
+    console.log("td is not empty");
+    emptyCells();
+  } else {
+    console.log("td is empty");
+  }
 }
-
 
 $(document).ready(function () {
-  console.log("document ready log")
-  $("#downloadButton").css("display","none")
+  console.log("document ready log");
+  $("#downloadButton").css("display", "none");
   $("#businessYear, #legalEntity, #itf, #businessYearEnd").on(
     "change",
     function () {
@@ -138,16 +142,26 @@ $(document).ready(function () {
         !!itf &&
         !!rowNum
       ) {
-        $("#form-table").css("display","block")
+        $("#form-table").css("display", "block");
         for (var i = 1; i <= rowFinalNum + 1; i++) {
           var businessYearLoop = year;
           tableRowSize++;
-          console.log("tableRowSize: "+tableRowSize);
+          console.log("tableRowSize: " + tableRowSize);
           console.log(
             businessYearEnd + "/" + businessYear + " " + itf + " " + legalEntity
           );
           resultHtml +=
-            "<tr id='table' ><td><input type='button' id='addRow' value='+' onClick='addTableRow(this)'/></td><td id='currentYear'>Current year: "+(i-1)+"</td><td contenteditable onkeyup='tdCheck(this)'>"+businessYearEnd+"/"+year+"</td><td contenteditable onkeyup='tdCheck(this)'>"+itf+"</td><td contenteditable onkeyup='tdCheck(this)'>"+legalEntity+"</td><td contenteditable onkeyup='tdCheck(this)'>N/A</td><td><input type='button' id='deleteRow' value='🗑️'onclick='RemoveMe(this)'/></td></tr>"
+            "<tr id='table' ><td><input type='button' id='addRow' value='+' onClick='addTableRow(this)'/></td><td id='currentYear'>Current year: " +
+            (i - 1) +
+            "</td><td contenteditable onkeyup='tdCheck(this)'>" +
+            businessYearEnd +
+            "/" +
+            year +
+            "</td><td contenteditable onkeyup='tdCheck(this)'>" +
+            itf +
+            "</td><td contenteditable onkeyup='tdCheck(this)'>" +
+            legalEntity +
+            "</td><td contenteditable onkeyup='tdCheck(this)'>N/A</td><td><input type='button' id='deleteRow' value='🗑️'onclick='RemoveMe(this)'/></td></tr>";
           year--;
           console.log("inside table building loop");
           emptyCells();
