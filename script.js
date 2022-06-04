@@ -105,8 +105,17 @@ function destroyClickedElement(event) {
       document.getElementById("businessYearEnd").value = data[1];
       document.getElementById("businessYear").value = data[2];
       document.getElementById("legalEntity").value = data[3];
-      for(i)
-      console.log("length of the data variable is: "+data.length)
+      for(var i = 0 ;i < 4 ; i++ ){
+        console.log("length of the data["+i+"] variable is: "+data[i].length)
+      }
+      if((data[0].length != 0) && (data[1].length != 0) && (data[2].length != 0) && (data[3].length != 0)) {
+        $("#form-table").css("display", "block");
+        console.log("Saved file has all inputs");
+        
+      } else {
+        console.log("Saved file has missing inputs");
+      }
+      
 //       if (){
         
 //       } else {
@@ -180,8 +189,9 @@ $(document).ready(function () {
         !!businessYearEnd &&
         !!legalEntity &&
         !!itf &&
-        !!rowNum &&
-        (rowNum <= year && rowNum >= 1990)
+        !!rowNum
+        // !!rowNum &&
+        // (rowNum <= year && rowNum >= 1990)
       ) {
         $("#form-table").css("display", "block");
         for (var i = 1; i <= rowFinalNum + 1; i++) {
