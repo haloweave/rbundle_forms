@@ -25,11 +25,11 @@ $("#businessYear").datepicker({
 function emptyCells() {
   var lengthOfEmptyCells = $("#form-table td:empty").length;
   console.log("length of empty cells: " + lengthOfEmptyCells);
-  if (lengthOfEmptyCells != 0) {
+  if (lengthOfEmptyCells == 0 && ($('#form-table').css('display') === 'block')) {
     console.log("condition applied");
-    $("#downloadButton").css("display", "none");
+    $("#downloadButton").css("display", "block");
   } else {
-    $("#downloadButton").css("display", "inline");
+    $("#downloadButton").css("display", "none");
     console.log("condition not applied");
   }
 }
@@ -105,6 +105,7 @@ function destroyClickedElement(event) {
       document.getElementById("businessYearEnd").value = data[1];
       document.getElementById("businessYear").value = data[2];
       document.getElementById("legalEntity").value = data[3];
+      for(i)
       console.log("length of the data variable is: "+data.length)
 //       if (){
         
@@ -208,6 +209,7 @@ $(document).ready(function () {
         }
       } else {
         $("#form-table").css("display", "none");
+        emptyCells();
         console.log("skipped table building loop");
       }
       table.html(resultHtml);
