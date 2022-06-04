@@ -45,6 +45,14 @@ function ExportToExcel(type, fn, dl) {
          XLSX.writeFile(wb, fn || ('MySheetName.' + (type || 'xlsx')));
     }
 
+function saveDynamicDataToFile() {
+
+            var userInput = document.getElementById("form-table").value;
+			
+            var blob = new Blob([userInput], { type: "text/plain;charset=utf-8" });
+            saveAs(blob, "dynamic.txt");
+        }
+
 function RemoveMe(object) {
   $(object).parents('tr').remove();
   renumberRows();
