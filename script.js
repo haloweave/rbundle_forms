@@ -44,9 +44,7 @@ function ExportToExcel(type, fn, dl) {
 
 function saveFormAsTextFile() {
   console.log("i've been clicked")
-  $("#businessYear, #legalEntity, #itf, #businessYearEnd").on(
-    "change",
-    function () {
+  
       var fieldsToSave =
         $("#itf").val() +
         "\n" +
@@ -71,8 +69,8 @@ function saveFormAsTextFile() {
       
       downloadLink.click();
     }
-  );
-}
+  
+
 
 function destroyClickedElement(event) {
   document.body.removeChild(event.target);
