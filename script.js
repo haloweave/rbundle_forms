@@ -106,10 +106,10 @@ function destroyClickedElement(event) {
       document.getElementById("businessYear").value = data[2];
       document.getElementById("legalEntity").value = data[3];
       for(var i = 0 ;i < 4 ; i++ ){
+        console.l
         console.log("length of the data["+i+"] variable is: "+data[i].length)
       }
       if((data[0].length != 0) && (data[1].length != 0) && (data[2].length != 0) && (data[3].length != 0)) {
-        $("#form-table").css("display", "block");
         console.log("Saved file has all inputs");
         
       } else {
@@ -168,6 +168,7 @@ function tdCheck(check) {
 
 $(document).ready(function () {
   console.log("document ready log");
+
   $("#downloadButton").css("display", "none");
   $("#businessYear, #legalEntity, #itf, #businessYearEnd").on(
     "change",
