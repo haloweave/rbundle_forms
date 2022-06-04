@@ -26,10 +26,7 @@ $("#businessYear").datepicker({
 function emptyCells() {
   var lengthOfEmptyCells = $("#form-table td:empty").length
   console.log("length of empty cells: "+lengthOfEmptyCells)
-  $("#businessYear, #legalEntity, #itf, #businessYearEnd").on(
-    "change",
-    function () {
-        if( lengthOfEmptyCells != 0) {
+  if( lengthOfEmptyCells != 0) {
     console.log("condition applied")
     $("#downloadButton").css("display", "none")
     
@@ -39,8 +36,6 @@ function emptyCells() {
     console.log("condition not applied")
   }
 }
-    });
-
 
 function ExportToExcel(type, fn, dl) {
        var elt = document.getElementById('form-table');
@@ -114,12 +109,12 @@ $(document).ready(function () {
             "<tr id='table' ><td><input type='button' id='addRow' value='+' onClick='addTableRow(this)'/></td><td id='currentYear'>Current year: "+(i-1)+"</td><td contenteditable>"+businessYearEnd+"/"+year+"</td><td contenteditable>"+itf+"</td><td contenteditable>"+legalEntity+"</td><td contenteditable>N/A</td><td><input type='button' id='deleteRow' value='🗑️'onclick='RemoveMe(this)'/></td></tr>"
           year--;
           console.log("inside table building loop");
+          emptyCells();
         }
       } else {
         console.log("skipped table building loop");
       }
       table.html(resultHtml);
-      emptyCells();
       return true;
     }
   );
