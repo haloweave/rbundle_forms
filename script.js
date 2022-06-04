@@ -71,6 +71,28 @@ function renumberRows() {
     });
 }
 
+function tdCheck(check)
+{
+    var data = check.innerHTML;
+    console.log("value of num is: "+num);
+    console.log(isNaN(num));
+    console.log("length of td: "+num.length)
+    
+    num = parseInt(num, 10);
+    if(!isNaN(num))
+    {
+    	if(num < 1 ){
+    		ctrl.innerHTML="";
+    		alert("Please Enter a Number Between 1 and 9.");
+    	}
+    }
+    else
+    {
+        ctrl.innerHTML="";
+        alert('Please enter digits only');
+    }
+}
+
 
 $(document).ready(function () {
   console.log("document ready log")
@@ -106,7 +128,7 @@ $(document).ready(function () {
             businessYearEnd + "/" + businessYear + " " + itf + " " + legalEntity
           );
           resultHtml +=
-            "<tr id='table' ><td><input type='button' id='addRow' value='+' onClick='addTableRow(this)'/></td><td id='currentYear'>Current year: "+(i-1)+"</td><td contenteditable>"+businessYearEnd+"/"+year+"</td><td contenteditable>"+itf+"</td><td contenteditable>"+legalEntity+"</td><td contenteditable>N/A</td><td><input type='button' id='deleteRow' value='🗑️'onclick='RemoveMe(this)'/></td></tr>"
+            "<tr id='table' ><td><input type='button' id='addRow' value='+' onClick='addTableRow(this)'/></td><td id='currentYear'>Current year: "+(i-1)+"</td><td contenteditable onkeyup='tdCheck(this)'>"+businessYearEnd+"/"+year+"</td><td contenteditable onkeyup='tdCheck(this)'>"+itf+"</td><td contenteditable onkeyup='tdCheck(this)'>"+legalEntity+"</td><td contenteditable onkeyup='tdCheck(this)'>N/A</td><td><input type='button' id='deleteRow' value='🗑️'onclick='RemoveMe(this)'/></td></tr>"
           year--;
           console.log("inside table building loop");
           emptyCells();
