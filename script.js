@@ -77,55 +77,56 @@ function destroyClickedElement(event) {
   document.body.removeChild(event.target);
 }
 
-(function() {
-  var input = document.getElementById("fileinput");
-  input.addEventListener("change", loadFile, false);
+// (function() {
+//   var input = document.getElementById("fileinput");
+//   input.addEventListener("change", loadFile, false);
 
-  function loadFile() {
-    var file, fr;
+//   function loadFile() {
+//     var file, fr;
 
-    if (typeof window.FileReader !== 'function') {
-      alert("The file API isn't supported on this browser yet.");
-      return;
-    }
+//     if (typeof window.FileReader !== 'function') {
+//       alert("The file API isn't supported on this browser yet.");
+//       return;
+//     }
 
-    if (!input.files) {
-      alert("This browser doesn't seem to support the `files` property of file inputs.");
-    } else if (!input.files[0]) {
-      alert("Please select a file before clicking 'Load'");
-    } else {
-      file = input.files[0];
-      fr = new FileReader();
-      fr.onload = receivedText;
-      fr.readAsText(file);
-    }
+//     if (!input.files) {
+//       alert("This browser doesn't seem to support the `files` property of file inputs.");
+//     } else if (!input.files[0]) {
+//       alert("Please select a file before clicking 'Load'");
+//     } else {
+//       file = input.files[0];
+//       fr = new FileReader();
+//       fr.onload = receivedText;
+//       fr.readAsText(file);
+//     }
 
-    function receivedText() {
-      var data = fr.result.split('\n');
-      document.getElementById("itf").value = data[0];
-      document.getElementById("businessYearEnd").value = data[1];
-      document.getElementById("businessYear").value = data[2];
-      document.getElementById("legalEntity").value = data[3];
-      for(var i = 0 ;i < 4 ; i++ ){
-        console.log("value of input is: "+$("#legalEntity").val())
-        console.log("length of the data["+i+"] variable is: "+data[i].length)
-      }
-      if((data[0].length != 0) && (data[1].length != 0) && (data[2].length != 0) && (data[3].length != 0)) {
+//     function receivedText() {
+//       var data = fr.result.split('\n');
+//       document.getElementById("itf").value = data[0];
+//       document.getElementById("businessYearEnd").value = data[1];
+//       document.getElementById("businessYear").value = data[2];
+//       document.getElementById("legalEntity").value = data[3];
+//       for(var i = 0 ;i < 4 ; i++ ){
+//         console.log("value of input is: "+$("#legalEntity").val())
+//         console.log("length of the data["+i+"] variable is: "+data[i].length)
+//         console.log("value of the data["+i+"] first letter is: "+data[i])
+//       }
+//       if((data[0].length != 0) && (data[1].length != 0) && (data[2].length != 0) && (data[3].length != 0)) {
         
-        console.log("Saved file has all inputs");
-        
-      } else {
-        console.log("Saved file has missing inputs");
-      }
-      
-//       if (){
+//         console.log("Saved file has all inputs");
         
 //       } else {
-        
+//         console.log("Saved file has missing inputs");
 //       }
-    }
-  }
-})();
+      
+// //       if (){
+        
+// //       } else {
+        
+// //       }
+//     }
+//   }
+// })();
 
 
 function RemoveMe(object) {
