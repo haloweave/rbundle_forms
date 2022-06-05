@@ -116,7 +116,6 @@ function destroyClickedElement(event) {
         console.log("value of the data["+i+"] first letter is: "+data[i])
       }
       if((data[0].length != 0) && (data[1].length != 0) && (data[2].length != 0) && (data[3].length != 0)) {
-        
         console.log("Saved file has all inputs");
         
       } else {
