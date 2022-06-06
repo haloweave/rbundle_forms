@@ -15,12 +15,73 @@
 // });
 
 let tableRowSize = 0;
-let uploadFileBool = false;
+
 $("#businessYear").datepicker({
   format: "yyyy",
   viewMode: "years",
   minViewMode: "years",
   endDate: new Date(),
+});
+
+$(document).ready(function () {
+  console.log("document ready log");
+  console.log("value of input is: "+$("#legalEntity").val())
+  $("#downloadButton").css("display", "none");
+  $("body").on(
+    "change", "#businessYear, #legalEntity, #itf, #businessYearEnd",
+    function mainTable() {
+      var legalEntity = $("#legalEntity").val();
+      var itf = $("#itf").val();
+      var businessYearEnd = $("#businessYearEnd").val();
+      var businessYear = $("#businessYear").val();
+      var table = $("#form-table tbody");
+      var downloadButton = $("#downloadButton");
+      var rowNum = $("#businessYear").val();
+      const d = new Date();
+      let year = d.getFullYear();
+      var rowFinalNum = year - rowNum;
+      var resultHtml = "";
+
+      if (
+        !!businessYear &&
+        !!businessYearEnd &&
+        !!legalEntity &&
+        !!itf &&
+        (rowNum <= year && rowNum >= 1990)
+      ) {
+        $("#form-table").css("display", "block");
+        for (var i = 1; i <= rowFinalNum + 1; i++) {
+          var businessYearLoop = year;
+          tableRowSize++;
+          console.log("tableRowSize: " + tableRowSize);
+          console.log(
+            businessYearEnd + "/" + businessYear + " " + itf + " " + legalEntity
+          );
+          resultHtml +=
+            "<tr id='table' ><td><input type='button' id='addRow' value='+' onClick='addTableRow(this)'/></td><td id='currentYear'>Current year: " +
+            (i - 1) +
+            "</td><td contenteditable onkeyup='tdCheck(this)'>" +
+            businessYearEnd +
+            "/" +
+            year +
+            "</td><td contenteditable onkeyup='tdCheck(this)'>" +
+            itf +
+            "</td><td contenteditable onkeyup='tdCheck(this)'>" +
+            legalEntity +
+            "</td><td contenteditable onkeyup='tdCheck(this)'>N/A</td><td><input type='button' id='deleteRow' value='🗑️'onclick='RemoveMe(this)'/></td></tr>";
+          year--;
+          console.log("inside table building loop");
+          emptyCells();
+        }
+      } else {
+        $("#form-table").css("display", "none");
+        emptyCells();
+        console.log("skipped table building loop");
+      }
+      table.html(resultHtml);
+      return true;
+    }
+  );
 });
 
 function emptyCells() {
@@ -116,17 +177,12 @@ function destroyClickedElement(event) {
         console.log("value of the data["+i+"] first letter is: "+data[i])
       }
       if((data[0].length != 0) && (data[1].length != 0) && (data[2].length != 0) && (data[3].length != 0)) {
+        mainTable();
         console.log("Saved file has all inputs");
         
       } else {
         console.log("Saved file has missing inputs");
       }
-      
-//       if (){
-        
-//       } else {
-        
-//       }
     }
   }
 })();
@@ -168,67 +224,9 @@ function tdCheck(check) {
     console.log("td is not empty");
     emptyCells();
   } else {
+    emptyCells();
     console.log("td is empty");
   }
 }
 
-$(document).ready(function () {
-  console.log("document ready log");
-  console.log("value of input is: "+$("#legalEntity").val())
-  $("#downloadButton").css("display", "none");
-  $("body").on(
-    "change", "#businessYear, #legalEntity, #itf, #businessYearEnd",
-    function () {
-      var legalEntity = $("#legalEntity").val();
-      var itf = $("#itf").val();
-      var businessYearEnd = $("#businessYearEnd").val();
-      var businessYear = $("#businessYear").val();
-      var table = $("#form-table tbody");
-      var downloadButton = $("#downloadButton");
-      var rowNum = $("#businessYear").val();
-      const d = new Date();
-      let year = d.getFullYear();
-      var rowFinalNum = year - rowNum;
-      var resultHtml = "";
 
-      if (
-        !!businessYear &&
-        !!businessYearEnd &&
-        !!legalEntity &&
-        !!itf &&
-        (rowNum <= year && rowNum >= 1990)
-      ) {
-        $("#form-table").css("display", "block");
-        for (var i = 1; i <= rowFinalNum + 1; i++) {
-          var businessYearLoop = year;
-          tableRowSize++;
-          console.log("tableRowSize: " + tableRowSize);
-          console.log(
-            businessYearEnd + "/" + businessYear + " " + itf + " " + legalEntity
-          );
-          resultHtml +=
-            "<tr id='table' ><td><input type='button' id='addRow' value='+' onClick='addTableRow(this)'/></td><td id='currentYear'>Current year: " +
-            (i - 1) +
-            "</td><td contenteditable onkeyup='tdCheck(this)'>" +
-            businessYearEnd +
-            "/" +
-            year +
-            "</td><td contenteditable onkeyup='tdCheck(this)'>" +
-            itf +
-            "</td><td contenteditable onkeyup='tdCheck(this)'>" +
-            legalEntity +
-            "</td><td contenteditable onkeyup='tdCheck(this)'>N/A</td><td><input type='button' id='deleteRow' value='🗑️'onclick='RemoveMe(this)'/></td></tr>";
-          year--;
-          console.log("inside table building loop");
-          emptyCells();
-        }
-      } else {
-        $("#form-table").css("display", "none");
-        emptyCells();
-        console.log("skipped table building loop");
-      }
-      table.html(resultHtml);
-      return true;
-    }
-  );
-});
