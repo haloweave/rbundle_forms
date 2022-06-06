@@ -180,7 +180,7 @@ function destroyClickedElement(event) {
         console.log("Saved file has all inputs");
         
       } else {
-        console.log("Saved file has missing inputs");
+        console.log("Saved file is missing inputs");
       }
     }
   }
